@@ -34,7 +34,6 @@ class _ChooseAreaState extends State<ChooseAreaPage> {
 
     if (selectedCity != null) {
       _nameController.text = selectedCity;
-      // Navigate to the next page here
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const HomePage()),
@@ -56,13 +55,17 @@ class _ChooseAreaState extends State<ChooseAreaPage> {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
+          crossAxisAlignment:
+              CrossAxisAlignment.start, // Align children to start
           children: [
-            const SizedBox(height: 50),
-            const Text(
-              'Enter your area name',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Enter your area name',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             const SizedBox(height: 12),
@@ -72,11 +75,23 @@ class _ChooseAreaState extends State<ChooseAreaPage> {
                 child: TextFormField(
                   controller: _nameController,
                   decoration: InputDecoration(
-                    border: const OutlineInputBorder(),
+                    labelText: 'Enter your location',
                     filled: true,
-                    fillColor: Colors.grey[200],
-                    focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey),
+                    fillColor: const Color.fromARGB(255, 255, 255, 255),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: const BorderSide(
+                          color: Colors.grey), // Set a visible border color
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: const BorderSide(
+                          color: Colors.grey), // Set a visible border color
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide:
+                          const BorderSide(width: 2, color: Colors.grey),
                     ),
                   ),
                 ),

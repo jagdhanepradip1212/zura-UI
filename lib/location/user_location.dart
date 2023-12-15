@@ -36,11 +36,11 @@ class _LocationPageState extends State<LocationPage> {
               ),
             ),
             const SizedBox(height: 8),
-            Image.asset(
-              'assets/location.png', // Path to your image asset
-              height: 200, // Adjust the height as needed
-              width: 200,
-              fit: BoxFit.contain, // Adjust the fit as needed
+
+            const Icon(
+              Icons.add_location_alt_outlined,
+              color: Colors.grey,
+              size: 130,
             ),
             const SizedBox(height: 20),
             ElevatedButton(

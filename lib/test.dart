@@ -1,51 +1,39 @@
-import 'package:flutter/material.dart';
+SizedBox(
+  height = 220, // Adjust the height as necessary
+  child = GridView.builder(
+    physics: const NeverScrollableScrollPhysics(), // to disable GridView's scrolling
+    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      crossAxisCount: 4, // Number of columns
+      crossAxisSpacing: 6, // Horizontal space between items
+      mainAxisSpacing: 6, // Vertical space between items
+    ),
+    itemCount: 8, // Number of items in the grid
+    itemBuilder: (BuildContext context, int index) {
+      // List of texts for each grid item
+      List<String> gridTexts = [
+        'Text 1', 'Text 2', 'Text 3', 'Text 4',
+        'Text 5', 'Text 6', 'Text 7', 'Text 8'
+      ];
 
-class InputScreen extends StatefulWidget {
-  const InputScreen({Key? key}) : super(key: key);
-
-  @override
-  _InputsScreenState createState() => _InputsScreenState();
-}
-
-class _InputsScreenState extends State<InputScreen> {
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent, // Makes the AppBar transparent
-        elevation: 0, // Removes the shadow
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            Navigator.of(context)
-                .pop(); // This line will navigate back to the previous screen
-          },
-        ),
-      ),
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-      body: const Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          children: [
-            // Remove the SizedBox with height 90, as AppBar provides natural spacing
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Help us to let you know',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+      return Column(
+        mainAxisSize: MainAxisSize.min, // To wrap the content in the column
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[300], // Example color for grid items
+              borderRadius: BorderRadius.circular(8),
             ),
-            SizedBox(height: 16),
-            // ... Rest of your code ...
-          ],
-        ),
-      ),
-    );
-  }
-}
+            height: 70, // Height for the grid box
+            width: double.infinity, // Make the container take full width in the grid cell
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 4), // Space between the container and text
+            child: Text(
+              gridTexts[index], // Displaying text from the list
+            ),
+          ),
+        ],
+      );
+    },
+  ),
+),
